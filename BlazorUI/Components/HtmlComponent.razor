@@ -1,0 +1,25 @@
+﻿
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            @_markup
+        </div>
+    </div>
+</div>
+@code {
+    HtmlBuilder _htmlBuilder;
+    MarkupString _markup;
+
+    protected override void OnInitialized()
+    {
+        //_htmlBuilder = new HtmlBuilder("ul class=\"list-group\"");
+        //_htmlBuilder.AddChild("li class=\"list-group-item active\"", "Hello");
+        //_htmlBuilder.AddChild("li class=\"list-group-item\"", "World");
+        _htmlBuilder = new HtmlBuilder("ul class=\"list-group\"", "List of words:")
+            .AddChild("li class=\"list-group-item active\"", "Hello")
+            .AddChild("li class=\"list-group-item\"", "World"); // using fluent interface
+
+        _markup = new MarkupString(_htmlBuilder.ToString());
+
+    }
+}
